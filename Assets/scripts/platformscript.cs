@@ -9,6 +9,8 @@ public class platformscript : MonoBehaviour
     public bool is_breakableplatform;
     public bool is_deadplatform;
 
+    public AudioClip breakSound;
+
     void Update()
     {
         Move();
@@ -34,6 +36,8 @@ public class platformscript : MonoBehaviour
         // ✅ Breakable Platform
         if (is_breakableplatform)
         {
+            if (breakSound)
+                AudioSource.PlayClipAtPoint(breakSound, transform.position);
             Destroy(gameObject); // player lagte hi toot jaye
         }
 
