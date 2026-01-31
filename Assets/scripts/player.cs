@@ -6,6 +6,8 @@ public class player : MonoBehaviour
     public float fallSpeed = -10f;       // slow fall speed
     public float maxFallSpeed = -10f;    // limit fall speed
 
+    public AudioClip deathSound;
+
     private Rigidbody2D rb;
     private bool isDead = false;
 
@@ -39,6 +41,9 @@ public class player : MonoBehaviour
     public void Die()
     {
         isDead = true;
+        if (deathSound)
+            AudioSource.PlayClipAtPoint(deathSound, transform.position);
+
         Debug.Log("Player Dead");
         Time.timeScale = 0f; // game over
     }

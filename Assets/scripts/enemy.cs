@@ -13,7 +13,15 @@ public class enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            player p = collision.gameObject.GetComponent<player>();
+            if (p != null)
+            {
+                p.Die();
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
 }
